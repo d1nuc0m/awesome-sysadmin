@@ -1,0 +1,23 @@
+name: Linting action
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  # https://github.com/sindresorhus/awesome-lint
+  awesome-lint:
+    name: Awesome List lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Run awesome-lint
+        run: npx awesome-lint
